@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useEffect, useContext } from 'react';
 import Sketch from 'react-p5';
 
-const DrawFourier = () => {
+import FourierContext from '../context/Fourier/FourierContext';
+
+const EgFourier = () => {
+
+    const { setTime, setHumbral, humbral } = useContext(FourierContext);
+
+    useEffect(() => {
+        //setTime(8);
+    }, []);
+
     let time = 0;
     let wave = [];
     
@@ -23,7 +32,7 @@ const DrawFourier = () => {
         let x = 0;
         let y = 0;
 
-        for (let i = 0; i < 2; i++) {
+        for (let i = 0; i < humbral; i++) {
 
             let prevx = x;
             let prevy = y;
@@ -67,10 +76,9 @@ const DrawFourier = () => {
     };
     return (
         <div>
-            Draw whit o5.js
             <Sketch setup={setup} draw={draw} />
         </div>
     )
 }
 
-export default DrawFourier;
+export default EgFourier;
