@@ -5,7 +5,7 @@ import FourierContext from './FourierContext';
 const FourierState = (props) => {
     const initialState = {
         time: 0,
-        humbral: 3
+        humbral: 10
     }
 
     const [state, dispatch] = useReducer(FourierReducer, initialState);
