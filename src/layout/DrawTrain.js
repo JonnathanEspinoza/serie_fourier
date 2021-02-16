@@ -2,16 +2,9 @@ import React, { useEffect, useContext } from 'react';
 import Sketch from 'react-p5';
 
 import drawing from '../controller/codingtrain';
-
-//import FourierContext from '../context/Fourier/FourierContext';
+import dft from '../controller/dft';
 
 const DrawTrain = () => {
-
-    //const { setTime, setHumbral, humbral } = useContext(FourierContext);
-
-    useEffect(() => {
-        //setTime(8);
-    }, []);
 
     let x = [];
     let y = [];
@@ -25,28 +18,7 @@ const DrawTrain = () => {
     let setup = (p5, canvasParentRef) => {
         let xyz = p5.createCanvas(800, 600).parent(canvasParentRef);
 
-        // ALGORITMO TRANSFORMADA DE FOURIER DISCRETA
-        function dft(x) {
-            const X = [];
-            const N = x.length;
-            for (let k = 0; k < N; k++) {
-                let re = 0;
-                let im = 0;
-                for (let n = 0; n < N; n++) {
-                    const phi = (p5.TWO_PI * k * n) / N;
-                    re += x[n] * p5.cos(phi);
-                    im -= x[n] * p5.sin(phi);
-                }
-                re = re / N;
-                im = im / N;
-
-                let freq = k;
-                let amp = p5.sqrt(re * re + im * im);
-                let phase = p5.atan2(im, re);
-                X[k] = { re, im, freq, amp, phase };
-            }
-            return X;
-        }
+        
 
         // señal arbitraria
         const skip = 8;
@@ -62,8 +34,8 @@ const DrawTrain = () => {
         // }
 
     // calcular la transformada discreta de Fourier de una señal arbitraria
-    fourierX = dft(x);
-    fourierY = dft(y);
+    fourierX = dft(x, p5);
+    fourierY = dft(y, p5);
 
     fourierX.sort((a, b) => b.amp - a.amp);
     fourierY.sort((a, b) => b.amp - a.amp);
@@ -94,8 +66,8 @@ let draw = (p5) => {
     // configure background
     p5.background(0);
 
-    let vx = epiCycles(300, 50, 0, fourierX, p5);
-    let vy = epiCycles(50, 200, p5.HALF_PI, fourierY, p5);
+    let vx = epiCycles(p5.width / 2 + 100, 100, 0, fourierX, p5);
+    let vy = epiCycles(100, p5.height / 2 + 87, p5.HALF_PI, fourierY, p5);
     let v = p5.createVector(vx.x, vy.y);
     path.unshift(v);
     p5.line(vx.x, vx.y, v.x, v.y);

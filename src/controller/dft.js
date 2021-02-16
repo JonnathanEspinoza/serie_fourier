@@ -4,9 +4,8 @@
 // https://youtu.be/MY4luNgGfms
 // https://editor.p5js.org/codingtrain/sketches/jawHqwfda
 
-import p5 from 'react-p5';
-
-function dft(x) {
+// ALGORITMO TRANSFORMADA DE FOURIER DISCRETA
+function dft(x, p5) {
     const X = [];
     const N = x.length;
     for (let k = 0; k < N; k++) {
