@@ -1,6 +1,5 @@
 import React from 'react';
 import Navbar from '../layout/Navbar';
-import EgFourier from '../layout/EgFourier';
 
 import unnamed from '../img/unnamed.png';
 
