@@ -1,16 +1,30 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+
 import Navbar from '../layout/Navbar';
-import DrawFourier from '../layout/DrawFourier';
+import EgFourierSquare from '../layout/EgFourierSquare';
+
+import './Fourier.css';
+
+// CONTEXT
+import FourierState from '../context/Fourier/FourierState';
 
 const Fourier = () => {
+
+
     return (
         <div>
+
             <Navbar />
-            <div className="container">
-                <div className="row">
-                    <DrawFourier />
+
+            <FourierState>
+                <div className="container">
+                    <div className="row">
+                        <div className="col s6 m6 l4">
+                            <EgFourierSquare />
+                        </div>
+                    </div>
                 </div>
-            </div> 
+            </FourierState>
         </div>
     )
 }

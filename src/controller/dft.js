@@ -1,0 +1,25 @@
+
+// ALGORITMO TRANSFORMADA DE FOURIER DISCRETA
+function dft(x, p5) {
+    const X = [];
+    const N = x.length;
+    for (let k = 0; k < N; k++) {
+        let re = 0;
+        let im = 0;
+        for (let n = 0; n < N; n++) {
+            const phi = (p5.TWO_PI * k * n) / N;
+            re += x[n] * p5.cos(phi);
+            im -= x[n] * p5.sin(phi);
+        }
+        re = re / N;
+        im = im / N;
+
+        let freq = k;
+        let amp = p5.sqrt(re * re + im * im);
+        let phase = p5.atan2(im, re);
+        X[k] = { re, im, freq, amp, phase };
+    }
+    return X;
+}
+
+export default dft;
