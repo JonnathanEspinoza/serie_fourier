@@ -1,8 +1,3 @@
-// Coding Challenge 130.1: Drawing with Fourier Transform and Epicycles
-// Daniel Shiffman
-// https://thecodingtrain.com/CodingChallenges/130-fourier-transform-drawing.html
-// https://youtu.be/MY4luNgGfms
-// https://editor.p5js.org/codingtrain/sketches/jawHqwfda
 
 // ALGORITMO TRANSFORMADA DE FOURIER DISCRETA
 function dft(x, p5) {

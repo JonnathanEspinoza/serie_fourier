@@ -108,9 +108,6 @@ const DrawFourier = () => {
             }
 
         }
-        //if (wave.length > 250) {
-        //  wave.pop();
-        //}
     };
 
 
